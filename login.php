@@ -12,12 +12,7 @@
         <h1>Login</h1>
         <p>Acesse sua conta</p>
 
-        <?php if (!empty($erro)): ?>
-            <div class="erro"><?php echo htmlspecialchars($erro); ?></div>
-        <?php endif; ?>
-
-
-        <form method="POST">
+        <form action="controllers/con_login.php" method="POST">
             <input type="text" name="usuario" placeholder="Usuário" required>
             <input type="password" name="senha" placeholder="Senha" required>
             <button type="submit">Entrar</button>

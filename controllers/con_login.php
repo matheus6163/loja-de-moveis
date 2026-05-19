@@ -8,7 +8,7 @@ function login($usuario, $senha){
         header('Location: ../index.php');
     }else{
         $_SESSION['erro']="Usuário ou senha incorretos";
-        header('Location; ../login.php')
+        header('Location; ../login.php');
     }
     exit();
 }
