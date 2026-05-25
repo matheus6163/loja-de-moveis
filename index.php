@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <?php include 'includes/header.php'; ?>
     <h1>oi</h1>
 </body>
 </html>
