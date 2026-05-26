@@ -13,8 +13,8 @@
         <h1>Login</h1>
         <p>Acesse sua conta</p>
 
-        <form action="controllers/con_login.php" method="POST">
-            <input type="text" name="usuario" placeholder="Usuário" required>
+        <form action="controllers/con_usuario.php?funcao=login" method="POST">
+            <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="senha" placeholder="Senha" required>
             <button type="submit">Entrar</button>
         </form>

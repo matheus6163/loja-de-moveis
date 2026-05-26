@@ -14,6 +14,7 @@
         <ul>
             <li><a href="index.php">Início</a></li>
             <li><a href="login.php">Login</a></li>
+            <li><a href="cadastro.php">cadastro</a></li>
             <?php if(isset($_SESSION['usuario']) && $_SESSION['logado'] == true): ?>
             <li><a href="#">Sobre</a></li>
             <li><a href="#">Contato</a></li>

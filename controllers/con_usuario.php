@@ -5,7 +5,7 @@ $CAMINHO=__DIR__."/../data/users.json";
 function carregar_arquivo(){
     global $CAMINHO;
     $arquivo=file_get_contents($CAMINHO);
-    $usuarios=json_decode($arquivo);
+    $usuarios=json_decode($arquivo, true);
     return $usuarios;
 }
 
@@ -42,13 +42,31 @@ function cadastrar_usuario($nome , $email, $senha){
     print_r($usuarios);
 
     if(!salvar_arquivo($usuarios)){
-       // header("Location: ../cadastrar.php");
+        header("Location: ../cadastrar.php");
     }else{
-        header("Location: ../index.php");
+        header("Location: ../login.php");
     }
 
 }
 
+function login($email, $senha){
+    $usuarios=carregar_arquivo();
+
+    foreach($usuarios as $usuario){
+
+        if($email === $usuario['email'] && $senha == $usuario['senha']){
+            $_SESSION['usuario']=$usuario;
+            $_SESSION['logado']= true;
+            header('Location: ../index.php');
+        }else{
+            var_dump($usuario);
+            $_SESSION['erro']="Email ou senha incorretos";
+            //header('Location: ../login.php');
+        }
+        
+    }exit();
+        
+}
 
 $funcao=$_GET['funcao'] ?? 'inicio';
 
@@ -58,4 +76,11 @@ if($funcao=='cadastrar'){
         $_POST['email'],
         $_POST['senha']
     );
+}elseif($funcao=='login'){
+    $email=$_POST['email'];
+    $senha=$_POST['senha'];
+
+    var_dump($_POST);
+
+    login($email, $senha);
 }
